@@ -1,0 +1,120 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fourier}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Compilado por Oscar Danilo Quintanilla Luna}
+\title{Introducción a Inducción Matemática}
+\begin{document}
+\maketitle
+($I_{1}$) que la primera proposición es cierta
+
+\section{Ejemplos}
+\begin{enumerate}
+\item[Ejemplo 1.1] Sea $a_{1},a_{2},a_{3},...$ una \textit{sucesión aritmética} con diferencia $d$ (es decir, para toda $n$,$a_{n+1}=a_{n}+d$. Probar que para $n\geq2$ se tiene $a_{n}=a_{1}+(n-1)d$.\\\\
+\underline{Solución}:\\
+Tenemos que,
+\begin{align*}
+\text{Caso n=1}\hspace{1cm}a_{2}=a_{1}+(2-1)d&&\\
+\text{Caso n=2}\hspace{1cm}a_{3}=a_{1}+(3-1)d&&\\
+\text{Caso n=3}\hspace{1cm}a_{4}=a_{1}+(4-1)d&&\\
+\text{Caso n=4}\hspace{1cm}a_{5}=a_{1}+(5-1)d&&\\
+\end{align*}
+Y es fácil darse cuenta que el caso $n=2$ es válido ya que por definición $a_{2}=a_{1}+d$. Hagamos ahora la hipótesis de inducción:``Para cierta $k\geq2$ es verdad que $a_{k}=a_{1}+(k-1)d$''. Utilizando esta hipótesis de inducción probemos que también es cierto para $n=k+1$.
+\begin{align*}
+a_{k+1}&=a_{k}+d\\
+&=a_{1}+(k-1)d+d\\
+&=a_{1}+((k+1)-1)d\\
+\end{align*}
+Terminando así la demostración.
+\item[Ejemplo 1.2] Comprobar para todo n natural, la \textit{fórmula de Gauss}
+$$1+2+3+4+5+\cdots+n=\frac{n(n+1)}{2}.$$\\
+\underline{Solución}:\\
+Veamos que el lado izquierdo de la expresión es la suma de todos los números menores a n y de este último, de ahí los cinco primeros casos (casos base) serían:
+\begin{align*}
+\text{Caso n=1}&&1=&\frac{1\times2}{2}=1&&\\
+\text{Caso n=2}&&1+2=&\frac{2\times3}{2}=3&&\\
+\text{Caso n=3}&&1+2+3=&\frac{3\times4}{2}=6&&\\
+\text{Caso n=4}&&1+2+3+4=&\frac{4\times5}{2}=10&&\\
+\text{Caso n=5}&&1+2+3+4+5=&\frac{5\times6}{2}=15&&\\
+\end{align*}
+Ahora tomaremos como hipótesis de inducción lo siguiente:\\
+Para cierto $k\geq1$ se tiene que $1+2+3+4+5+\cdots+k=\frac{k(k+1)}{2}$. Queremos usar esto para probar que $1+2+3+4+5+\cdots+k+1=\frac{(k+1)((k+1)+1)}{2}$. Para ello tomamos el lado izquierdo de la igualdad que queremos probar y buscamos la forma de acomodar los términos para usar la hipótesis de inducción y después obtener el lado derecho de la igualdad:
+\begin{align*}
+1+2+3+\cdots+(k+1)&=1+2+3+\cdots+k+(k+1)\\
+&=\frac{k(k+1)}{2}+(k+1)\\
+&=\frac{k(k+1)+2(k+1)}{2}\\
+&=\frac{(k+2)(k+1)}{2}\\
+\end{align*}
+Notemos que la primera igualdad es el paso comparativo y en la segunda igualdad utilizamos la Hipótesis de inducción. Quedando así demostrado.
+\item[\emph{[Nota]}]Ahora que hemos demostrado la \textit{fórmula de Gauss} es fácil calcular la suma de una \textit{sucesión aritmética}.\\
+Sea la suma $S_{n}:=a_{1}+a_{2}+a_{3}+\cdots+a_{n}$ con $a_{j}=a_{1}+(j-1)d$, de aquí tenemos que:
+\begin{align*}
+S_{n}&=a_{1}+a_{2}+a_{3}+\cdots+a_{n}\\
+&=a_{1}+(a_{1}+d)+(a_{1}+2d)+\cdots+(a_{1}+(n-1)d)\\
+&=na_{1}+(d+2d+\cdots+(n-1)d)\\
+&=na_{1}+(1+2+\cdots+(n-1))d\\
+&=na_{1}+\frac{n(n-1)}{2}d\\
+&=\frac{n}{2}(2a_{1}+(n-1)d)\\
+&=\frac{n}{2}(a_{1}+a_{n})
+\end{align*}
+Y así queda expresada la suma de una \textit{sucesión aritmética} tanto en función de su primer término, diferencia de la sucesión y el número de elementos como en función de sus extremos y el número de elementos.
+\item[Ejemplo 1.3] Probar que si n es un entero mayor que $3$, entonces $n!>2^n$.\\\\
+\underline{Solución}:\\
+Nuestro caso base será $n=4$, el cual cumple ($4!=24>2^4=16$. Ahora asumamos que $n!>2^n$ para algún $n=k$. Deseamos usar esto para probar el ``siguiente'' caso, que sería $(k+1)!>2^{k+1}$. Observemos que el lado izquierdo de nuestra hipótesis de inducción es $k!$ y el lado izquierdo de nuestra ``meta'' es $(k+1)!$ ¿Cómo podemos llegar de una a la otra? Multiplicamos ambos lados de la hipótesis inductiva por $n+1$, por supuesto. Al multiplicar ambos lados de una igualdad por un número positiva no cambia su verdad, por lo que obtenemos $$(n+1)!>2^n(n+1).$$
+Ya casi llegamos a lo que queremos, para el lado derecho de nuestra ```meta'' tenemos que $2^{n+1}=2^n\cdot2$, y $n+1$ es ciertamente mayor que $2$;de ahí que
+\begin{equation*}
+(n+1)!>2^n(n+1)>2^n\cdot2=2^{n+1}.
+\end{equation*}
+\item[Ejemplo 1.4] Demostrar que todo conjunto con $n$ elementos posee $2^n$ subconjuntos.\\\\
+\underline{Solución}:\\
+El resultado es obvio para cuando $n=0$ pues es el conjunto con $0$ elementos sólo tiene un subconjunto que es él mismo.\\
+Sea $n\geq1$, nuestra hipótesis de inducción será ``Todo conjunto con $n-1$ elementos tiene $2^{n-1}$ subconjuntos''. Consideremos el conjunto $A=\{a_{1},a_{2},a_{3},...,a_{n}\}$ con $n$ elementos; ahora consideremos un conjunto $B=\{a_{1},a_{2},a_{3},...,a_{n-1}\}$, este conjunto es subconjunto de $A$ y posee $2^{n-1}$ subconjuntos (por nuestra hipótesis de inducción).\\
+Luego, notemos que nosotros podemos clasificar a los subconjuntos de $A$ en dos clases: los que no tienen el elemento $a_ {n}$ (que son los subconjuntos de $B$) y los que sí lo tienen.\\
+El número de conjuntos de las dos clases es el mismo pues cada conjunto de la segunda clase se obtiene adjuntando el elemento $a_ {n}$ a uno de los conjuntos de la primera. Entonces como cada una de las clases tiene $2^{n-1}$ subconjuntos en total $A$ tendrá $2^{n-1}+2^{n-1}=2\times2^{n-1}=2^{n}$ subconjuntos, como queríamos demostrar.
+\item[Ejemplo 1.5] Probar que la suma de los ángulos interiores de cualquier n-ágono convexo es $180(n-2)$ grados.\\\\
+\underline{Solución}:\\
+El caso base $n=3$ es el bien conocido hecho que la suma de los ángulos interiores de cualquier triángulo es $180$ grados. Ahora asumamos que el teorema es cierto para todo n-ágono convexo con $n\geq3$. Nosotros mostraremos que esto implica que es cierto para $(n+1)$-ágonos convexos; siendo la suma de los ángulos interiores a estos $(n+1)$-ágonos, $180(n+1-2)=180(n-1)$ grados.\\
+Sea $P$ un $(n+1)$-ágono convexo arbitrario con vértices $v_{1},v_{2},v_{3},...,v_{n+1}$. Descompongamos $P$ en la unión del triángulo $T$ con vértices $v_{1},v_{2},v_{3}$ y el n-ágono convexo $Q$ con vértices $v_{1},v_{3},v_{4},...,v_{n+1}$.La suma de los ángulos interiores de $P$ es igual a la suma de los ángulos interiores de $T$ (la cual es $180$ grados), más la suma de los ángulos interiores de $Q$ (la cual es 180(n-2) por nuestra hipótesis de inducción).\\
+De ahí que la suma sea $180+180(n-2)=180(n-1)$, justo lo que queríamos probar.
+\item[Ejemplo 1.6]Probar que la suma de la \textit{sucesión geométrica} $1,r,r^2,r^3,...,r^n$ es igual a $\frac{r^{n+1}-1}{r-1}$ para cualquier natural $n$.\\\\
+\underline{Solución}:\\
+Veamos,
+\begin{align*}
+\text{Caso n=1}&&1+r=&\frac{r^{1+1}-1}{r-1}&&\\
+\text{Caso n=2}&&1+r+r^2=&\frac{r^{2+1}-1}{r-1}&&\\
+\text{Caso n=3}&&1+r+r^2+r^3=&\frac{r^{3+1}-1}{r-1}&&\\
+\text{Caso n=4}&&1+r+r^2+r^3+r^4=&\frac{r^{4+1}-1}{r-1}&&\\
+\text{Caso n=5}&&1+r+r^2+r^3+r^4+r^5=&\frac{r^{5+1}-1}{r-1}&&\\
+\end{align*}
+Para probar la veracidad de nuestro caso base $n=1$ recordemos que $r^2-1=(r+1)(r-1)$ y dividamos esta ecuación por $r-1$.Para esta ocasión, nuestra hipótesis de inducción será,``Para cierta $k\geq1$ se cumple $1+r+r^2+r^3+\cdots+r^k=\frac{r^{k+1}-1}{r-1}$''. A partir de esta suposición probemos que la fórmula correspondiente para $n=k+1$:
+\begin{align*}
+1+r+r^2+r^3+\cdots+r^{k+1}&=1+r+r^2+r^3+\cdots+r^k+r^{k+1}\\
+&=\frac{r^{k+1}-1}{r-1}+r^{k+1}\\
+&=\frac{r^{k+1}-1+(r-1)r^{k+1}}{r-1}\\
+&=\frac{r^{k+1}-1+r^{k+2}-r^{k+1}}{r-1}\\
+&=\frac{r^{k+2}-1}{r-1}\\
+&=\frac{r^{(k+1)+1}-1}{r-1}.\\
+\end{align*}
+De esta serie de igualdades concluimos que, si la fórmula se supone válida para $n=k$, entonces también lo será para $n=k+1$, y con esto completamos satisfactoriamente todos los pasos en el método de inducción. Concluimos entonces que la fórmula es cierta para todo $n$.
+
+\end{enumerate}
+\section{Ejercicios Propuestos}
+\begin{enumerate}
+\item[Ejercicio 2.1]Probar que el producto de tres enteros consecutivos es múltiplo de 6.
+\item[Ejercicio 2.2]Probar que para $n$ natural se tiene la fórmula
+$$1^2+2^2+3^2+\cdots+n^2=\frac{n(n+1)(2n+1)}{6}$$
+\item[Ejercicio 2.3]Pruebe para todo natural $n$ se cumple que
+$$\frac{1}{1\times2}+\frac{1}{2\times3}+\frac{1}{3\times4}+\cdots+\frac{1}{n\times(n+1)}=\frac{n}{n+1}$$
+\item[Ejercicio 2.4]Pruebe que $11^{n+2} +12^{2n+1}$ es divisible por 133.
+\item[Ejercicio 2.5]
+\end{enumerate}
+\begin{thebibliography}{X}
+\bibitem{OMMc} \textsc{María Luisa Pérez-Seguí}, \textit{Combinatoria, Cuadernos de Olimpiadas de Matemáticas}, 3ra Edición, 2da Reimpresión, 2008
+\end{thebibliography}
+
+\end{document}
